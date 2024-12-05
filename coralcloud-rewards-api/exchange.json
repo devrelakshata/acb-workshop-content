@@ -1,0 +1,13 @@
+{
+  "main": "coralcloud-rewards-api.json",
+  "name": "coralcloud-rewards-api",
+  "groupId": "55a91032-15f5-4207-89d3-e9bbeec89d2f",
+  "assetId": "coralcloud-rewards-api",
+  "version": "1.0.1",
+  "classifier": "oas",
+  "tags": [],
+  "descriptorVersion": "1.0.0",
+  "organizationId": "55a91032-15f5-4207-89d3-e9bbeec89d2f",
+  "apiVersion": "v1",
+  "originalFormatVersion": "3.0"
+}

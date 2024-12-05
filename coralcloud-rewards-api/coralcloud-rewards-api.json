@@ -1,0 +1,459 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Holiday Club Resort Loyalty Program API",
+    "description": "API for managing the loyalty program of the Holiday Club Resort.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.holidayclubresort.com",
+      "description": "Production server"
+    },
+    {
+      "url": "https://api-sandbox.holidayclubresort.com",
+      "description": "Sandbox server"
+    }
+  ],
+  "paths": {
+    "/members": {
+      "get": {
+        "summary": "Get a list of loyalty program members",
+        "tags": ["Members"],
+        "responses": {
+          "200": {
+            "description": "A list of members",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Member"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new loyalty program member",
+        "tags": ["Members"],
+        "requestBody": {
+          "description": "Member object to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Member created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members/{memberId}": {
+      "get": {
+        "summary": "Get a specific member by ID",
+        "tags": ["Members"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Member details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Member not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a member's information",
+        "tags": ["Members"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated member object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Member updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Member not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a member",
+        "tags": ["Members"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Member deleted successfully"
+          },
+          "404": {
+            "description": "Member not found"
+          }
+        }
+      }
+    },
+    "/rewards": {
+      "get": {
+        "summary": "Get a list of available rewards",
+        "tags": ["Rewards"],
+        "responses": {
+          "200": {
+            "description": "A list of rewards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reward"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new reward",
+        "tags": ["Rewards"],
+        "requestBody": {
+          "description": "Reward object to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reward"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Reward created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reward"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rewards/{rewardId}": {
+      "get": {
+        "summary": "Get a specific reward by ID",
+        "tags": ["Rewards"],
+        "parameters": [
+          {
+            "name": "rewardId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reward details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reward"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Reward not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a reward's information",
+        "tags": ["Rewards"],
+        "parameters": [
+          {
+            "name": "rewardId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated reward object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reward"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reward updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reward"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Reward not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a reward",
+        "tags": ["Rewards"],
+        "parameters": [
+          {
+            "name": "rewardId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reward deleted successfully"
+          },
+          "404": {
+            "description": "Reward not found"
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "get": {
+        "summary": "Get a list of transactions",
+        "tags": ["Transactions"],
+        "responses": {
+          "200": {
+            "description": "A list of transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new transaction",
+        "tags": ["Transactions"],
+        "requestBody": {
+          "description": "Transaction object to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}": {
+      "get": {
+        "summary": "Get a specific transaction by ID",
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transaction not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Member": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "12345"
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "joinDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-01-01"
+          },
+          "points": {
+            "type": "integer",
+            "example": 1000
+          }
+        }
+      },
+      "Reward": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "r123"
+          },
+          "name": {
+            "type": "string",
+            "example": "Free Night Stay"
+          },
+          "description": {
+            "type": "string",
+            "example": "One free night stay at any of our resorts"
+          },
+          "pointsRequired": {
+            "type": "integer",
+            "example": 500
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "t123"
+          },
+          "memberId": {
+            "type": "string",
+            "example": "12345"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["earn", "redeem"],
+            "example": "earn"
+          },
+          "points": {
+            "type": "integer",
+            "example": 100
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-01-01T12:00:00Z"
+          }
+        }
+      }
+    }
+  }
+}
